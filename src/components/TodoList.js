@@ -1,13 +1,22 @@
 import React, { Fragment } from 'react';
 import TodoItem from './TodoItem';
 
-const TodoList = () => {
+const TodoList = ( {todos, onCheck, onRemove} ) => {
+  const todoList = todos.map( (todo) => ( 
+    <TodoItem
+      id = {todo.id}
+      key = {todo.id}
+      checked = {todo.checked}
+      text={todo.text}
+      onCheck={onCheck}
+      onRemove={onRemove}
+    />
+  ));
+
   // Fragment 는, JSX 를 감싸고 싶은데 따로 DOM 엘리먼트를 만들고싶지 않을 때 사용합니다.
   return (
     <Fragment>
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
+      {todoList}
     </Fragment>
   );
 };
